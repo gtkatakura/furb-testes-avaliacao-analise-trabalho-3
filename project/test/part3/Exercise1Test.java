@@ -25,7 +25,7 @@ public class Exercise1Test {
 			.cnh("24960914640")
 			.typePeople(TypePeople.PHYSICAL)
 			.patherName("Darth Vader")
-			.motherName("Padm� Naberrie")
+			.motherName("Padmé Naberrie")
 			.build();
 		
 		ClientRepository repository = new ClientRepository();
@@ -147,8 +147,38 @@ public class Exercise1Test {
 	
 	// Author: matheuswaltrich
 	@Test
-	public void RF004() {
+	public void RF004manterFuncionarios() {
+		Employee employee = new Employee.Builder()
+			.name(null)
+			.birthDate(LocalDate.of(1991, 05, 10))
+			.phone("999999999")
+			.address("Rua XV de novembro, 71")
+			.salary(5000.00)
+			.department("TI")
+			.office("desenvolvedor")
+			.pis(100.00)
+			.workpermit("812732039")
+			.cpf("119829374926")
+			.sex("M")
+			.email("joao@test.org")
+			.maritalstatus("Casado")
+			.cep("82560300")
+			.workload(8)
+			.schooling("Superior Completo")
+			.openingDate(LocalDate.of(2017, 5, 05))
+			.closeDate(LocalDate.of(2020, 5, 05))
+			.build();
+			
+		EmployeeRepository employeeRepository = new EmployeeRepository();
 		
+		assertFalse(employeeRepository.save(employee));
+		assertEquals(employee.getId(), 0);
+		assertEquals(employeeRepository.find(employee), null);
+		
+		employee.setName("João da Silva");
+		
+		assertTrue(employeeRepository.save(employee));
+		assertEquals(employeeRepository.find(employee.getId()), employee);
 	}
 	
 	// Author: gabrielsbernardi

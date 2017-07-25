@@ -3,6 +3,7 @@ package part3;
 import static org.junit.Assert.*;
 
 import java.awt.Color;
+import java.security.Provider.Service;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -263,73 +264,66 @@ public class Exercise1Test {
 	
 	// Author: gabrielsbernardi
 	@Test
-	public void RF005ConsultarDadosCliente(String opcao) {
-		if (opcao.equalsIgnoreCase("PESSOAL")) {
-			People people = new Employee.Builder()
-				.name(null)
-				.birthDate(LocalDate.of(1991, 05, 10))
-				.phone("999999999")
-				.type(TypePeople.PHYSICAL)
-				.cnh(null)
-				.address("Rua XV de novembro, 71")
-				.openingDate(LocalDate.of(2017, 5, 05))
-				.email("joao@test.org")
-				.cpf("119829374926")
-				.build();
-
-			PeopleRepository peopleRepository = new PeopleRepository();
+	public void RF005ConsultarDadosCliente() {
+		VehicleBrand volkswagen = new VehicleBrand("volkswagen");
+		VehicleModel ecosport = new VehicleModel("ecosport");
 		
-			assertFalse(peopleRepository.save(people));
-			assertEquals(people.getId(), 0);
-			assertEquals(peopleRepository.find(people), null);
-
-			people.setName("JoÃ£o da Silva");
-
-			assertTrue(peopleRepository.save(people));
-			assertEquals(peopleRepository.find(people.getId()), people);
-		} else if (opcao.equalsIgnoreCase("VEICULO")) {
-			VehicleBrand volkswagen = new VehicleBrand("volkswagen");
-			VehicleModel gol = new VehicleModel("gol");
-			
-			Vehicle volkswagenCar = new Vehicle.Builder()
-				.brand(volkswagen)
-				.model(gol)
-				.type(TypeVehicle.CAR)
-				.year(2010)
-				.color("red")
-				.plate("ABC-1234")
-				.renavam("123456789")
-				.chassis("A1S54F1V5D4F5D4")
-				.build();
-			
-			VehicleRepository repository = new VehicleRepository();
-			repository.save(volkswagenCar);
-			
-			List<Vehicle> vehicles = new ArrayList<>();
-			vehicles.add(volkswagenCar);
-
-			assertEquals(report.generate(), vehicles);
-			report.setBrand(volkswagen);
-			assertEquals(report.generate(), vehicles);
-		} else {
-			Service service = new Service.Builder()
-				.contractedService("asd")
-				.name("Teste")
-				.monthlyValue(52.5)
-				.cover(100)
-				.discounts(2.5)
-				.realValue(75)
-				.build();
-
-			ServiceRepository serviceRepository = new ServiceRepository();
+		Vehicle car = new Vehicle.Builder()
+			.brand(volkswagen)
+			.model(ecosport)
+			.type(TypeVehicle.CAR)
+			.year(2010)
+			.build();
 		
-			assertFalse(serviceRepository.save(service));
-			assertEquals(service.getId(), 0);
-			assertEquals(serviceRepository.find(service), null);
+		VehicleRepository vehicleRepository = new VehicleRepository();
+		vehicleRepository.save(car);
 
-			assertTrue(serviceRepository.save(service));
-			assertEquals(serviceRepository.find(service.getId()), service);
-		}
+		Service service = new Service.Builder()
+			.name("Serviço de Teste")
+			.planType("teste")
+			.dateHiring(LocalDate.of(2017, 07, 25))
+			.contactNumber("19273919")
+			.discount(new BigDecimal("2.8"))
+			.realValue(new BigDecimal("100"))
+			.build();
+		
+		ServiceRepository serviceRepository = new ServiceRepository();
+		serviceRepository.save(service);
+		
+		List<Service> services = new ArrayList<>();
+		services.add(service);
+		
+		Employee employee = new Employee.Builder()
+			.name("Gabriel Takashi Katakura")
+			.birthDate(LocalDate.of(1991, 05, 10))
+			.phone("999999999")
+			.address("Rua XV de novembro, 71")
+			.salary(new BigDecimal("5000"))
+			.department(new Department("TI"))
+			.office(new Office("desenvolvedor"))
+			.pis(100.00)
+			.workpermit("812732039")
+			.cpf("119829374926")
+			.sex(PeopleSex.MALE)
+			.email("joao@test.org")
+			.maritalStatus(MaritalStatus.MARRIED)
+			.cep("82560300")
+			.workload(8)
+			.schooling(new Schooling("Superior Completo"))
+			.openingDate(LocalDate.of(2017, 5, 05))
+			.closeDate(LocalDate.of(2020, 5, 05))
+			.vehicle(car)
+			.services(services)
+			.build();
+			
+		EmployeeRepository employeeRepository = new EmployeeRepository();
+		employeeRepository.save(employee);
+		
+		PersonalPage personalPage = new PersonalPage(employee);
+		
+		assertEquals(personalPage.optionPersonal(), employee);
+		assertEquals(personalPage.optionVehicle(), car);
+		assertEquals(personalPage.optionServices(), services);
 	}
 	
 	

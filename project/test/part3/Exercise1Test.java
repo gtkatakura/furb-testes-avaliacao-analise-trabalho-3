@@ -93,16 +93,33 @@ public class Exercise1Test {
 		VehicleModel ecosport = new VehicleModel("ecosport");
 		
 		Vehicle fordCar = new Vehicle.Builder()
-				.manufacter(tesla)
-				.brand(ford)
-				.model(ecosport)
-				.type(TypeVehicle.CAR)
-				.year(2010)
-				.build();
+			.manufacter(tesla)
+			.brand(ford)
+			.model(ecosport)
+			.type(TypeVehicle.CAR)
+			.year(2010)
+			.build();
 		
-		VehicleRepository repository = new VehicleRepository();
+		Client client1 = new Client.Builder()
+			.name("Takashi")
+			.enrollment(LocalDate.of(2017, 10, 1))
+			.birthDate(LocalDate.of(1995, 1, 1))
+			.vehicle(fordCar)
+			.build();
 		
-		repository.save(fordCar);
+		Client client2 = new Client.Builder()
+			.name("Katakura")
+			.enrollment(LocalDate.of(2017, 9, 1))
+			.birthDate(LocalDate.of(1995, 1, 1))
+			.vehicle(fordCar)
+			.build();
+		
+		ClientRepository clientRepository = new ClientRepository();
+		VehicleRepository vehicleRepository = new VehicleRepository();
+		
+		vehicleRepository.save(fordCar);
+		clientRepository.save(client1);
+		clientRepository.save(client2);
 
 		MarketingReport report = new MarketingReport.Builder()
 			.monthOfEnrollment(10)
@@ -111,5 +128,17 @@ public class Exercise1Test {
 			.manufacter(tesla)
 			.model(ecosport)
 			.build();
+		
+		List<Client> clients = new ArrayList<>();
+		
+		clients.add(client1);
+		clients.add(client2);
+		
+		assertEquals(report.generate(), clients);
+		
+		report.setMonthOfEnrollment(10);
+		clients.remove(client2);
+		
+		assertEquals(report.generate(), clients);
 	}
 }

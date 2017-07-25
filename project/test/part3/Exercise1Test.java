@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class Exercise1Test {
 
+	// Author: Gabriel Takashi Katakura
 	@Test
 	public void RF001manterClientes() {
 		Client client = new Client.Builder()
@@ -39,6 +40,7 @@ public class Exercise1Test {
 		assertEquals(repository.find(client.getId()), client);
 	}
 
+	// Author: Gabriel Takashi Katakura
 	@Test
 	public void RF002emissaoDeRelatoriosDeVeiculos() {
 		VehicleBrand volkswagen = new VehicleBrand("volkswagen");
@@ -85,6 +87,7 @@ public class Exercise1Test {
 		assertEquals(report.generate(), vehicles);
 	}
 	
+	// Author: Gabriel Takashi Katakura
 	@Test
 	public void RF003_emissaoDeRelatoriosDeMarketing() {
 		Manufacter tesla = new Manufacter();
@@ -140,5 +143,41 @@ public class Exercise1Test {
 		clients.remove(client2);
 		
 		assertEquals(report.generate(), clients);
+	}
+	
+	// Author: matheuswaltrich
+	@Test
+	public void RF004() {
+		
+	}
+	
+	// Author: gabrielsbernardi
+	@Test
+	public void RF005() {
+		
+	}
+	
+	// Author: Orlando Krause Junior
+	@Test
+	public void RF006() {
+		
+	}
+	
+	// Author: evertonslv
+	@Test
+	public void RF007() {
+		
+	}
+	
+	// Author: 
+	@Test
+	public void RF008() {
+		
+	}
+	
+	// Author: 
+	@Test
+	public void RF009() {
+		
 	}
 }

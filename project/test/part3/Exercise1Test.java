@@ -183,13 +183,7 @@ public class Exercise1Test {
 	
 	// Author: gabrielsbernardi
 	@Test
-	public void RF005() {
-		
-	}
-	
-	// Author: Orlando Krause Junior
-	@Test
-	public void RF006(String opcao) {
+	public void RF005(String opcao) {
 		if (opcao.equalsIgnoreCase("PESSOAL")) {
 			People people = new Employee.Builder()
 				.name(null)
@@ -230,15 +224,19 @@ public class Exercise1Test {
 			List<Vehicle> vehicles = new ArrayList<>();
 		
 			vehicles.add(volkswagenCar);
-			vehicles.add(fordCar);
 
 			assertEquals(report.generate(), vehicles);
 
 			report.setBrand(volkswagen);
-			vehicles.remove(fordCar);
 
 			assertEquals(report.generate(), vehicles);
 		}
+	}
+	
+	// Author: Orlando Krause Junior
+	@Test
+	public void RF006() {
+		
 	}
 	
 	// Author: evertonslv

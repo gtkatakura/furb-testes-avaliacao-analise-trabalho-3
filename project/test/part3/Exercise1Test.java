@@ -2,6 +2,7 @@ package part3;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -261,20 +262,29 @@ public class Exercise1Test {
 	// Author: evertonslv
 	@Test
 	public void RF007_ManterCadastroVeiculo() {
+		
+		Client client = new Client.getCliente("08924312230");
+		
 		Manufacter tesla = new Manufacter();
 		VehicleBrand ford = new VehicleBrand("ford");
 		
 		VehicleModel ecosport = new VehicleModel("ecosport");
 		
 		Vehicle fordCar = new Vehicle.Builder()
-			.manufacter(tesla)
-			.brand(ford)
-			.model(ecosport)
-			.type(TypeVehicle.CAR)
-			.year(2010)
-			.build();
+				.type(TypeVehicle.CAR)
+				.brand(ford)
+				.manufacter(tesla)
+				.color(Color.BLACK)
+				.plate("ABC-1234")
+				.cnh(null)
+				.model(ecosport)
+				.year(2010)
+				.chassi(123456)
+				.renavam(654321)
+				.build();
 		
 			VehicleRepository vehicleRepository = new VehicleRepository();
+			vehicleRepository.add(client);
 			
 			assertTrue(vehicleRepository.save(fordCar));
 			assertEquals(vehicleRepository.find(fordCar.getId()), fordCar);
@@ -285,13 +295,14 @@ public class Exercise1Test {
 	@Test
 	public void RF008() {
 		VehicleModel model = new VehicleModel("model01");
+		Status status = new Status("aguardando");
 		
 		Product product = new Product.Builder()
 				.fabricatName("Teste")
 				.model(model)
 				.value(100.00)
 				.serialNumber(123456)
-				.status(2)
+				.status(status)
 				.chassi(654321);
 			
 				ProductRepository productRepository = new ProductRepository();

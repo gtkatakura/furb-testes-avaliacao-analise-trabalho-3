@@ -15,12 +15,12 @@ public class Exercise1Test {
 	/*
 	RF001: Manter Clientes:
 
-	Dado O  administrador  dever·  inserir  os  seguintes dados  obrigatÛrios:  
-	Nome,  EndereÁo,  CEP,  Data  de  nascimento,  Data  de abertura, RG, CPF ou CNPJ, 
-	Telefone, E-mail para contato, CNH, Tipo de pessoa (fÌsica ou jurÌdica); 
-	e os campos n„o obrigatÛrios: Nome do pai e Nome da m„e)
+	Dado O  administrador  dever√°  inserir  os  seguintes dados  obrigat√≥rios:  
+	Nome,  Endere√ßo,  CEP,  Data  de  nascimento,  Data  de abertura, RG, CPF ou CNPJ, 
+	Telefone, E-mail para contato, CNH, Tipo de pessoa (f√≠sica ou jur√≠dica); 
+	e os campos n√£o obrigat√≥rios: Nome do pai e Nome da m√£e)
 	Quando Inserir um cliente
-	Ent„o O sistema dever· cadastrar um novo cliente.
+	Ent√£o O sistema dever√° cadastrar um novo cliente.
 	*/	
 	
 	// Author: Gabriel Takashi Katakura
@@ -39,7 +39,7 @@ public class Exercise1Test {
 			.cnh("24960914640")
 			.typePeople(TypePeople.PHYSICAL)
 			.patherName("Darth Vader")
-			.motherName("Padm√© Naberrie")
+			.motherName("Padm√É¬© Naberrie")
 			.build();
 		
 		ClientRepository repository = new ClientRepository();
@@ -56,11 +56,11 @@ public class Exercise1Test {
 
 	
 	/*
-	RF002: Emiss„o de relatÛrios de veÌculos:
+	RF002: Emiss√£o de relat√≥rios de ve√≠culos:
 
-	Dado Marca, Modelo, Tipo de veÌculo e Ano
-	Quando Emitir um relatÛrio
-	Ent„o O sistema dever· apresentar o relatÛrio gerado, com os campos nome, e-mail, telefone e plano.
+	Dado Marca, Modelo, Tipo de ve√≠culo e Ano
+	Quando Emitir um relat√≥rio
+	Ent√£o O sistema dever√° apresentar o relat√≥rio gerado, com os campos nome, e-mail, telefone e plano.
 	*/
 	
 	// Author: Gabriel Takashi Katakura
@@ -113,13 +113,13 @@ public class Exercise1Test {
 	
 	
 	/*
-	RF003: Emiss„o de relatÛrios de Markenting:
+	RF003: Emiss√£o de relat√≥rios de Markenting:
 
 	Dado os seguintes campos opcionais como a data de nascimento, 
-	endereÁo, modelo do veÌculo, ano, fabricante e tipo de modelo
-	Quando emitido o relatÛrio
-	Ent„o È exibido os dados informados como o nome, data de nascimento, 
-	endereÁo, modelo do veÌculo, ano, fabricante, e tipo de veÌculo
+	endere√ßo, modelo do ve√≠culo, ano, fabricante e tipo de modelo
+	Quando emitido o relat√≥rio
+	Ent√£o √© exibido os dados informados como o nome, data de nascimento, 
+	endere√ßo, modelo do ve√≠culo, ano, fabricante, e tipo de ve√≠culo
 	*/	
 	
 	// Author: Gabriel Takashi Katakura
@@ -197,17 +197,17 @@ public class Exercise1Test {
 	
 	
 	/*
-	RF004 Manter Cadastro de Funcion·rio:
+	RF004 Manter Cadastro de Funcion√°rio:
 
-	Dado um funcion·rio com os dados completos (nome, data de nascimento, telefone, 
-	endereÁo, sal·rio, departamento, funÁ„o, pis, carteira de trabalho, CPF, sexo, e-mail, 
-	estado civil, carga hor·rio, escolaridade, data de admiss„o e data de desligamento)
-	Quando o sistema tentar cadastrar esse funcion·rio Ent„o dever· efetuar o cadastro com sucesso
-	Quando o sistema tentar alterar esse funcion·rio Ent„o dever· efetuar a alteraÁ„o com sucesso
-	Quando o sistema tentar inativar este funcion·rio Ent„o dever· efetuar a inativaÁ„o com sucesso
-	Quando o sistema tentar pesquisar por este funcion·rio Ent„o o funcion·rio dever· ser encontrado
-	(deve-se apresentar o nome, data de nascimento, telefone, endereÁo, sal·rio, departamento, funÁ„o, 
-	pis, carteira de trabalho, CPF, sexo, e-mail, estado civil, carga hor·rio, escolaridade, data de admiss„o 
+	Dado um funcion√°rio com os dados completos (nome, data de nascimento, telefone, 
+	endere√ßo, sal√°rio, departamento, fun√ß√£o, pis, carteira de trabalho, CPF, sexo, e-mail, 
+	estado civil, carga hor√°rio, escolaridade, data de admiss√£o e data de desligamento)
+	Quando o sistema tentar cadastrar esse funcion√°rio Ent√£o dever√° efetuar o cadastro com sucesso
+	Quando o sistema tentar alterar esse funcion√°rio Ent√£o dever√° efetuar a altera√ß√£o com sucesso
+	Quando o sistema tentar inativar este funcion√°rio Ent√£o dever√° efetuar a inativa√ß√£o com sucesso
+	Quando o sistema tentar pesquisar por este funcion√°rio Ent√£o o funcion√°rio dever√° ser encontrado
+	(deve-se apresentar o nome, data de nascimento, telefone, endere√ßo, sal√°rio, departamento, fun√ß√£o, 
+	pis, carteira de trabalho, CPF, sexo, e-mail, estado civil, carga hor√°rio, escolaridade, data de admiss√£o 
 	e data de desligamento)
 	*/
 	
@@ -241,7 +241,7 @@ public class Exercise1Test {
 		assertEquals(employee.getId(), 0);
 		assertEquals(employeeRepository.find(employee), null);
 		
-		employee.setName("Jo„o da Silva");
+		employee.setName("Jo√£o da Silva");
 		
 		assertTrue(employeeRepository.save(employee));
 		assertEquals(employeeRepository.find(employee.getId()), employee);
@@ -249,16 +249,16 @@ public class Exercise1Test {
 	
 	
 	/*
-	RF005: P·gina de acesso para o cliente consultar seus dados:
+	RF005: P√°gina de acesso para o cliente consultar seus dados:
 	
-	Dado as opÁıes ìPessoalî, ìVeÌculoî e ìServiÁosî
-	Quando selecionado a opÁ„o "Pessoal" Ent„o  os  seguintes dados ser„o exibidos na tela: 
-	Nome, Data de Nascimento, Telefone, TIpo de Pessoa(Fisica  ou  Juridica),  CNH,  EndereÁo,
+	Dado as op√ß√µes ‚ÄúPessoal‚Äù, ‚ÄúVe√≠culo‚Äù e ‚ÄúServi√ßos‚Äù
+	Quando selecionado a op√ß√£o "Pessoal" Ent√£o  os  seguintes dados ser√£o exibidos na tela: 
+	Nome, Data de Nascimento, Telefone, TIpo de Pessoa(Fisica  ou  Juridica),  CNH,  Endere√ßo,
 	Data  de  Abertura,  E-mail, CPF/CNPJ
-	Quando selecionado a opÁ„o "Veiculo" Ent„o os seguintes campos dever„o aparecer:
-	Fabricante, Modelo do VeÌculo, Tipo de VeÌculo, Cor do Veiculo, Placa  do  VeÌculo,
-	RENAVAM,  Chassi  e  Ano  do  VeÌculo
-	Quando selecionado a opÁ„o "ServiÁosî Ent„o o sistema exibir· na tela os campos Ata da ContrataÁ„o,
+	Quando selecionado a op√ß√£o "Veiculo" Ent√£o os seguintes campos dever√£o aparecer:
+	Fabricante, Modelo do Ve√≠culo, Tipo de Ve√≠culo, Cor do Veiculo, Placa  do  Ve√≠culo,
+	RENAVAM,  Chassi  e  Ano  do  Ve√≠culo
+	Quando selecionado a op√ß√£o "Servi√ßos‚Äù Ent√£o o sistema exibir√° na tela os campos Ata da Contrata√ß√£o,
 	Nome do Plano, Valor Mensal, Cobertura, Desconto, Valor Real.	
 	*/
 	
@@ -279,7 +279,7 @@ public class Exercise1Test {
 		vehicleRepository.save(car);
 
 		Service service = new Service.Builder()
-			.name("ServiÁo de Teste")
+			.name("Servi√ßo de Teste")
 			.planType("teste")
 			.dateHiring(LocalDate.of(2017, 07, 25))
 			.contactNumber("19273919")
@@ -328,13 +328,13 @@ public class Exercise1Test {
 	
 	
 	/*
-	RF006: Manter cadastro de serviÁo:
+	RF006: Manter cadastro de servi√ßo:
 
-	Dado o CPF  para  localizar  o  cliente. Dever„o ser preenchidos os seguintes campos:
-	Nome do ServiÁo, Tipo do Plano, Data da ContrataÁ„o, Numero do Contrato, Desconto e Valor Real
-	Quando o cliente for  incluir um serviÁo
-	Ent„o o sistema exibir· na tela os seguintes campos: Nome do Cliente, CPF do Cliente, 
-	Nome do ServiÁo, Tipo do Plano, Data da ContrataÁ„o, Numero do Contrato, Desconto e Valor Real.
+	Dado o CPF  para  localizar  o  cliente. Dever√£o ser preenchidos os seguintes campos:
+	Nome do Servi√ßo, Tipo do Plano, Data da Contrata√ß√£o, Numero do Contrato, Desconto e Valor Real
+	Quando o cliente for  incluir um servi√ßo
+	Ent√£o o sistema exibir√° na tela os seguintes campos: Nome do Cliente, CPF do Cliente, 
+	Nome do Servi√ßo, Tipo do Plano, Data da Contrata√ß√£o, Numero do Contrato, Desconto e Valor Real.
 	*/
 	
 	// Author: Matheus Waltrich da Silva
@@ -355,7 +355,7 @@ public class Exercise1Test {
 		assertEquals(service.getId(), 0);
 		assertEquals(serviceRepository.find(service.getId()), null);
 		
-		service.setName("ServiÁo de teste");
+		service.setName("Servi√ßo de teste");
 		
 		assertTrue(serviceRepository.save(service));
 		assertEquals(serviceRepository.find(service.getId()), service);
@@ -363,12 +363,12 @@ public class Exercise1Test {
 	
 	
 	/*
-	RF007: Manter cadastro de veÌculo
+	RF007: Manter cadastro de ve√≠culo
 
-	Dado o CPF  para  localizar  o  cliente. Dever„o ser preenchidos os seguintes campos: 
+	Dado o CPF  para  localizar  o  cliente. Dever√£o ser preenchidos os seguintes campos: 
 	Tipo do Veiculo, Fabricante, Cor, Placa, CNH, Modelo, Ano, Chassi e RENAVAM
-	Quando o administrador for  incluir um veÌculo
-	Ent„o o sistema exibir· uma tela com os seguintes campos: nome do cliente, CPF, 
+	Quando o administrador for  incluir um ve√≠culo
+	Ent√£o o sistema exibir√° uma tela com os seguintes campos: nome do cliente, CPF, 
 	Tipo do Veiculo, Fabricante, Cor, Placa, CNH, Modelo, Ano, Chassi e RENAVAM.
 	*/
 	
@@ -406,7 +406,7 @@ public class Exercise1Test {
 			.cnh("24960914640")
 			.typePeople(TypePeople.PHYSICAL)
 			.patherName("Darth Vader")
-			.motherName("Padm√© Naberrie")
+			.motherName("Padm√É¬© Naberrie")
 			.vehicle(fordCar)
 			.build();
 		
@@ -426,9 +426,9 @@ public class Exercise1Test {
 	/*
 	RF008: Manter Produto
 
-	Dado o nome do fabricante, o modelo, o valor o n˙mero de sÈrie, status e chassis
-	Quando o gerente selecionar um equipamento e alterar alguma informaÁ„o da mesma
-	Ent„o o sistema dever· inserir o equipamento com sucesso
+	Dado o nome do fabricante, o modelo, o valor o n√∫mero de s√©rie, status e chassis
+	Quando o gerente selecionar um equipamento e alterar alguma informa√ß√£o da mesma
+	Ent√£o o sistema dever√° inserir o equipamento com sucesso
 	*/
 	
 	// Author: evertonslv
@@ -455,14 +455,83 @@ public class Exercise1Test {
 	/*
 	RF009: Log do Sistema
 
-	Dado uma alteraÁ„o no sistema
-	Quando a execuÁ„o for finalizada
-	Ent„o ser· gerado um arquivo txt, com a seguinte formataÁ„o: [Data][Hora][Usu·rio][AÁ„o realizada no sistema]
+	Dado uma altera√ß√£o no sistema
+	Quando a execu√ß√£o for finalizada
+	Ent√£o ser√° gerado um arquivo txt, com a seguinte formata√ß√£o: [Data][Hora][Usu√°rio][A√ß√£o realizada no sistema]
 	*/
 	
 	// Author: 
 	@Test
 	public void RF009() {
-		
+		// Adicionar Ve√É¬≠culo
+		Manufacter tesla = new Manufacter("tesla");
+		VehicleBrand ford = new VehicleBrand("ford");
+
+		VehicleModel ecosport = new VehicleModel("ecosport");
+
+		Vehicle fordCar = new Vehicle.Builder()
+				.type(TypeVehicle.CAR)
+				.brand(ford)
+				.manufacter(tesla)
+				.color(Color.BLACK)
+				.plate("ABC-1234")
+				.cnh(null)
+				.model(ecosport)
+				.year(2010)
+				.chassi("123456")
+				.renavam("654321")
+				.build();
+
+		VehicleRepository vehicleRepository = new VehicleRepository();
+		vehicleRepository.save(fordCar);
+
+		String actualDate = LocalDateTime.now().toString();
+		String actualUser = System.getProperty("user.name");
+		assertTrue(Logger.getLogger().getLoggedLines().contains(actualDate + " " + actualUser + " Adicionado veiculo " + fordCar.toString()));
+
+
+		// Adicionar Cliente
+		Client client = new Client.Builder()
+				.name(null)
+				.address("Rua dos Alfeneiros, 71")
+				.cep("82560300")
+				.birthDate(LocalDate.of(1995, 1, 1))
+				.openingDate(LocalDate.of(2017, 7, 24))
+				.rg("2977269")
+				.cpf("83784234410")
+				.phone("123456789")
+				.email("junit@test.org")
+				.cnh("24960914640")
+				.typePeople(TypePeople.PHYSICAL)
+				.patherName("Darth Vader")
+				.motherName("Padm√É∆í√Ü‚Äô√É‚Äö√Ç¬© Naberrie")
+				.build();
+
+		ClientRepository repository = new ClientRepository();
+		repository.save(client);
+
+		String actualDate = LocalDateTime.now().toString();
+		String actualUser = System.getProperty("user.name");
+		assertTrue(Logger.getLogger().getLoggedLines().contains(actualDate + " " + actualUser + " Adicionado Cliente " + client.toStrin()));
+
+
+		// Adiciona Product
+		ProductModel tracking = new ProductModel("rastreamento");
+		Status status = new Status("aguardando");
+
+		Product product = new Product.Builder()
+				.manufacterName("Nome do Fabricante")
+				.model(tracking)
+				.value(new BigDecimal("100"))
+				.serialNumber("123456")
+				.status(status)
+				.chassi("654321");
+
+		ProductRepository productRepository = new ProductRepository();
+		productRepository.save(product);
+
+		String actualDate = LocalDateTime.now().toString();
+		String actualUser = System.getProperty("user.name");
+		assertTrue(Logger.getLogger().getLoggedLines().contains(actualDate + " " + actualUser + " Adicionado Cliente " + product.toStrin()));
 	}
 }

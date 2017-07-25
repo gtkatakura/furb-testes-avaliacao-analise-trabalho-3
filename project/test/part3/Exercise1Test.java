@@ -278,33 +278,51 @@ public class Exercise1Test {
 	// Author: evertonslv
 	@Test
 	public void RF007_ManterCadastroVeiculo() {
-		
-		Client client = new Client.getCliente("08924312230");
-		
-		Manufacter tesla = new Manufacter();
+		Manufacter tesla = new Manufacter("tesla");
 		VehicleBrand ford = new VehicleBrand("ford");
 		
 		VehicleModel ecosport = new VehicleModel("ecosport");
 		
 		Vehicle fordCar = new Vehicle.Builder()
-				.type(TypeVehicle.CAR)
-				.brand(ford)
-				.manufacter(tesla)
-				.color(Color.BLACK)
-				.plate("ABC-1234")
-				.cnh(null)
-				.model(ecosport)
-				.year(2010)
-				.chassi(123456)
-				.renavam(654321)
-				.build();
+			.type(TypeVehicle.CAR)
+			.brand(ford)
+			.manufacter(tesla)
+			.color(Color.BLACK)
+			.plate("ABC-1234")
+			.cnh(null)
+			.model(ecosport)
+			.year(2010)
+			.chassi("123456")
+			.renavam("654321")
+			.build();
 		
-			VehicleRepository vehicleRepository = new VehicleRepository();
-			vehicleRepository.add(client);
-			
-			assertTrue(vehicleRepository.save(fordCar));
-			assertEquals(vehicleRepository.find(fordCar.getId()), fordCar);
-			
+		Client client = new Client.Builder()
+			.name("Gabriel Takashi Katakura")
+			.address("Rua dos Alfeneiros, 71")
+			.cep("82560300")
+			.birthDate(LocalDate.of(1995, 1, 1))
+			.openingDate(LocalDate.of(2017, 7, 24))
+			.rg("2977269")
+			.cpf("83784234410")
+			.phone("123456789")
+			.email("junit@test.org")
+			.cnh("24960914640")
+			.typePeople(TypePeople.PHYSICAL)
+			.patherName("Darth Vader")
+			.motherName("Padmé Naberrie")
+			.vehicle(fordCar)
+			.build();
+		
+		VehicleRepository vehicleRepository = new VehicleRepository();
+		vehicleRepository.add(fordCar);
+		
+		ClientRepository clientRepository = new ClientRepository();
+		clientRepository.save(client);
+		
+		Client clientFindedByCnpj = clientRepository.findByCpf("82560300");
+		
+		assertEquals(clientFindedByCnpj, client);
+		assertEquals(clientFindedByCnpj.getVehicle(), fordCar);
 	}
 	
 	// Author: evertonslv

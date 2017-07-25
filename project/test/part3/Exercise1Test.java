@@ -230,6 +230,8 @@ public class Exercise1Test {
 			report.setBrand(volkswagen);
 
 			assertEquals(report.generate(), vehicles);
+		} else {
+			
 		}
 	}
 	

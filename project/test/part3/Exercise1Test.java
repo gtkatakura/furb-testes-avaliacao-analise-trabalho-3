@@ -69,6 +69,7 @@ public class Exercise1Test {
 		repository.save(fordCard);
 		
 		VehiclesReport report = new VehiclesReport.Builder()
+			.vehicleRepository(repository)
 			.brand(null)
 			.model(ecosport)
 			.type(TypeVehicle.CAR)
@@ -91,29 +92,40 @@ public class Exercise1Test {
 	// Author: Gabriel Takashi Katakura
 	@Test
 	public void RF003_emissaoDeRelatoriosDeMarketing() {
-		Manufacter tesla = new Manufacter();
+		Manufacter volkswagenManufacter = new Manufacter("volkswagen");
+		Manufacter fordManufacter = new Manufacter("ford");
+		
+		VehicleBrand volkswagen = new VehicleBrand("volkswagen");
 		VehicleBrand ford = new VehicleBrand("ford");
 		
 		VehicleModel ecosport = new VehicleModel("ecosport");
 		
+		Vehicle volkswagenCar = new Vehicle.Builder()
+			.manufacter(volkswagenManufacter)
+			.brand(volkswagen)
+			.model(ecosport)
+			.type(TypeVehicle.CAR)
+			.year(2010)
+			.build();
+		
 		Vehicle fordCar = new Vehicle.Builder()
-			.manufacter(tesla)
+			.manufacter(fordManufacter)
 			.brand(ford)
 			.model(ecosport)
 			.type(TypeVehicle.CAR)
 			.year(2010)
 			.build();
 		
-		Client client1 = new Client.Builder()
+		Client volkswagenClient = new Client.Builder()
 			.name("Takashi")
 			.enrollment(LocalDate.of(2017, 10, 1))
 			.birthDate(LocalDate.of(1995, 1, 1))
-			.vehicle(fordCar)
+			.vehicle(volkswagen)
 			.build();
 		
-		Client client2 = new Client.Builder()
+		Client fordClient = new Client.Builder()
 			.name("Katakura")
-			.enrollment(LocalDate.of(2017, 9, 1))
+			.enrollment(LocalDate.of(2017, 10, 1))
 			.birthDate(LocalDate.of(1995, 1, 1))
 			.vehicle(fordCar)
 			.build();
@@ -121,27 +133,31 @@ public class Exercise1Test {
 		ClientRepository clientRepository = new ClientRepository();
 		VehicleRepository vehicleRepository = new VehicleRepository();
 		
+		vehicleRepository.save(volkswagenCar);
 		vehicleRepository.save(fordCar);
-		clientRepository.save(client1);
-		clientRepository.save(client2);
+		
+		clientRepository.save(volkswagenClient);
+		clientRepository.save(fordClient);
 
 		MarketingReport report = new MarketingReport.Builder()
+			.vehicleRepository(vehicleRepository)
+			.clientRepository(clientRepository)
 			.monthOfEnrollment(10)
 			.yearOfEnrollment(2017)
 			.birthDate(LocalDate.of(1995, 1, 1))
-			.manufacter(tesla)
+			.manufacter(null)
 			.model(ecosport)
 			.build();
 		
 		List<Client> clients = new ArrayList<>();
 		
-		clients.add(client1);
-		clients.add(client2);
+		clients.add(volkswagenClient);
+		clients.add(fordClient);
 		
 		assertEquals(report.generate(), clients);
 		
-		report.setMonthOfEnrollment(10);
-		clients.remove(client2);
+		report.setManufacter(fordManufacter);
+		clients.remove(volkswagenClient);
 		
 		assertEquals(report.generate(), clients);
 	}

@@ -343,10 +343,28 @@ public class Exercise1Test {
 	Nome do Serviço, Tipo do Plano, Data da Contratação, Numero do Contrato, Desconto e Valor Real.
 	*/
 	
-	// Author: Orlando Krause Junior
+	// Author: Matheus Waltrich da Silva
 	@Test
-	public void RF006() {
+	public void RF006manterServico() {
+			Service service = new Service.Builder()
+			.name(null)
+			.planType("teste")
+			.dateHiring(LocalDate.of(2017, 07, 25))
+			.contactNumber("19273919")
+			.discount(2.8)
+			.realValue(100.00)
+			.build();
 		
+		ServiceRepository serviceRepository = new ServiceRepository();
+		
+		assertFalse(serviceRepository.save(service));
+		assertEquals(service.getId(), 0);
+		assertEquals(serviceRepository.find(service.getId()), null);
+		
+		service.setName("Serviço de teste");
+		
+		assertTrue(serviceRepository.save(service));
+		assertEquals(serviceRepository.find(service.getId()), service);
 	}
 	
 	

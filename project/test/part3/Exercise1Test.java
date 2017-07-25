@@ -183,13 +183,13 @@ public class Exercise1Test {
 	
 	// Author: gabrielsbernardi
 	@Test
-	public void RF005(String opcao) {
+	public void RF005ConsultarDadosCliente(String opcao) {
 		if (opcao.equalsIgnoreCase("PESSOAL")) {
 			People people = new Employee.Builder()
 				.name(null)
 				.birthDate(LocalDate.of(1991, 05, 10))
 				.phone("999999999")
-				.type("Física")
+				.type(TypePeople.PHYSICAL)
 				.cnh(null)
 				.address("Rua XV de novembro, 71")
 				.openingDate(LocalDate.of(2017, 5, 05))
@@ -216,22 +216,39 @@ public class Exercise1Test {
 				.model(gol)
 				.type(TypeVehicle.CAR)
 				.year(2010)
+				.color("red")
+				.plate("ABC-1234")
+				.renavam("123456789")
+				.chassis("A1S54F1V5D4F5D4")
 				.build();
 			
 			VehicleRepository repository = new VehicleRepository();
 			repository.save(volkswagenCar);
 			
 			List<Vehicle> vehicles = new ArrayList<>();
-		
 			vehicles.add(volkswagenCar);
 
 			assertEquals(report.generate(), vehicles);
-
 			report.setBrand(volkswagen);
-
 			assertEquals(report.generate(), vehicles);
 		} else {
-			
+			Service service = new Service.Builder()
+				.contractedService("asd")
+				.name("Teste")
+				.monthlyValue(52.5)
+				.cover(100)
+				.discounts(2.5)
+				.realValue(75)
+				.build();
+
+			ServiceRepository serviceRepository = new ServiceRepository();
+		
+			assertFalse(serviceRepository.save(service));
+			assertEquals(service.getId(), 0);
+			assertEquals(serviceRepository.find(service), null);
+
+			assertTrue(serviceRepository.save(service));
+			assertEquals(serviceRepository.find(service.getId()), service);
 		}
 	}
 	

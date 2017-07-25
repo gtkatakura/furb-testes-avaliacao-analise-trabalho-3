@@ -170,18 +170,18 @@ public class Exercise1Test {
 			.birthDate(LocalDate.of(1991, 05, 10))
 			.phone("999999999")
 			.address("Rua XV de novembro, 71")
-			.salary(5000.00)
-			.department("TI")
-			.office("desenvolvedor")
+			.salary(new BigDecimal("5000"))
+			.department(new Department("TI"))
+			.office(new Office("desenvolvedor"))
 			.pis(100.00)
 			.workpermit("812732039")
 			.cpf("119829374926")
-			.sex("M")
+			.sex(PeopleSex.MALE)
 			.email("joao@test.org")
-			.maritalstatus("Casado")
+			.maritalStatus(MaritalStatus.MARRIED)
 			.cep("82560300")
 			.workload(8)
-			.schooling("Superior Completo")
+			.schooling(new Schooling("Superior Completo"))
 			.openingDate(LocalDate.of(2017, 5, 05))
 			.closeDate(LocalDate.of(2020, 5, 05))
 			.build();
@@ -192,7 +192,7 @@ public class Exercise1Test {
 		assertEquals(employee.getId(), 0);
 		assertEquals(employeeRepository.find(employee), null);
 		
-		employee.setName("Jo√£o da Silva");
+		employee.setName("Jo„o da Silva");
 		
 		assertTrue(employeeRepository.save(employee));
 		assertEquals(employeeRepository.find(employee.getId()), employee);

@@ -328,22 +328,21 @@ public class Exercise1Test {
 	// Author: evertonslv
 	@Test
 	public void RF008() {
-		
-		VehicleModel model = new VehicleModel("model01");
+		ProductModel tracking = new ProductModel("rastreamento");
 		Status status = new Status("aguardando");
 		
 		Product product = new Product.Builder()
-				.fabricatName("Teste")
-				.model(model)
-				.value(100.00)
-				.serialNumber(123456)
-				.status(status)
-				.chassi(654321);
-			
-				ProductRepository productRepository = new ProductRepository();
-				
-				assertTrue(productRepository.save(product));
-				assertEquals(productRepository.find(product.getId()), product);
+			.manufacterName("Nome do Fabricante")
+			.model(tracking)
+			.value(new BigDecimal("100"))
+			.serialNumber("123456")
+			.status(status)
+			.chassi("654321");
+		
+		ProductRepository productRepository = new ProductRepository();
+		
+		assertTrue(productRepository.save(product));
+		assertEquals(productRepository.find(product.getId()), product);
 	}
 	
 	// Author: 

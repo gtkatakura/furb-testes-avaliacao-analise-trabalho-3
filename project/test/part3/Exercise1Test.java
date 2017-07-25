@@ -189,8 +189,56 @@ public class Exercise1Test {
 	
 	// Author: Orlando Krause Junior
 	@Test
-	public void RF006() {
+	public void RF006(String opcao) {
+		if (opcao.equalsIgnoreCase("PESSOAL")) {
+			People people = new Employee.Builder()
+				.name(null)
+				.birthDate(LocalDate.of(1991, 05, 10))
+				.phone("999999999")
+				.type("Física")
+				.cnh(null)
+				.address("Rua XV de novembro, 71")
+				.openingDate(LocalDate.of(2017, 5, 05))
+				.email("joao@test.org")
+				.cpf("119829374926")
+				.build();
+
+			PeopleRepository peopleRepository = new PeopleRepository();
 		
+			assertFalse(peopleRepository.save(people));
+			assertEquals(people.getId(), 0);
+			assertEquals(peopleRepository.find(people), null);
+
+			people.setName("João da Silva");
+
+			assertTrue(peopleRepository.save(people));
+			assertEquals(peopleRepository.find(people.getId()), people);
+		} else if (opcao.equalsIgnoreCase("VEICULO")) {
+			VehicleBrand volkswagen = new VehicleBrand("volkswagen");
+			VehicleModel gol = new VehicleModel("gol");
+			
+			Vehicle volkswagenCar = new Vehicle.Builder()
+				.brand(volkswagen)
+				.model(gol)
+				.type(TypeVehicle.CAR)
+				.year(2010)
+				.build();
+			
+			VehicleRepository repository = new VehicleRepository();
+			repository.save(volkswagenCar);
+			
+			List<Vehicle> vehicles = new ArrayList<>();
+		
+			vehicles.add(volkswagenCar);
+			vehicles.add(fordCar);
+
+			assertEquals(report.generate(), vehicles);
+
+			report.setBrand(volkswagen);
+			vehicles.remove(fordCar);
+
+			assertEquals(report.generate(), vehicles);
+		}
 	}
 	
 	// Author: evertonslv

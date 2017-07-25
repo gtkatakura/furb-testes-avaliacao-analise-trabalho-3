@@ -165,14 +165,44 @@ public class Exercise1Test {
 	
 	// Author: evertonslv
 	@Test
-	public void RF007() {
+	public void RF007_ManterCadastroVeiculo() {
+		Manufacter tesla = new Manufacter();
+		VehicleBrand ford = new VehicleBrand("ford");
 		
+		VehicleModel ecosport = new VehicleModel("ecosport");
+		
+		Vehicle fordCar = new Vehicle.Builder()
+			.manufacter(tesla)
+			.brand(ford)
+			.model(ecosport)
+			.type(TypeVehicle.CAR)
+			.year(2010)
+			.build();
+		
+			VehicleRepository vehicleRepository = new VehicleRepository();
+			
+			assertTrue(vehicleRepository.save(fordCar));
+			assertEquals(vehicleRepository.find(fordCar.getId()), fordCar);
+			
 	}
 	
-	// Author: 
+	// Author: evertonslv
 	@Test
 	public void RF008() {
+		VehicleModel model = new VehicleModel("model01");
 		
+		Product product = new Product.Builder()
+				.fabricatName("Teste")
+				.model(model)
+				.value(100.00)
+				.serialNumber(123456)
+				.status(2)
+				.chassi(654321);
+			
+				ProductRepository productRepository = new ProductRepository();
+				
+				assertTrue(productRepository.save(product));
+				assertEquals(productRepository.find(product.getId()), product);
 	}
 	
 	// Author: 

@@ -294,6 +294,7 @@ public class Exercise1Test {
 	// Author: evertonslv
 	@Test
 	public void RF008() {
+		
 		VehicleModel model = new VehicleModel("model01");
 		Status status = new Status("aguardando");
 		
